@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikita will you be my valentine ? ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#ff0844,#ffb199);
+    overflow:hidden;
+}
+
+.container{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    color:white;
+    width:420px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.names{
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.message{
+    margin-bottom:20px;
+    font-size:16px;
+}
+
+.buttons{
+    position:relative;
+    height:90px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    font-size:16px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+#yesBtn{
+    background:white;
+    color:#ff0844;
+}
+
+#noBtn{
+    position:absolute;
+    background:#ff4d6d;
+    color:white;
+    left:150px;
+    top:0;
+}
+
+/* Popup */
+.popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:white;
+    color:#ff0844;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
+    transition:0.4s;
+}
+
+.popup.active{
+    transform:translate(-50%,-50%) scale(1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="names">Nikita will you be my Valentine ? ❤️</div>
+
+    <div class="message">
+        Nikita, will you be my Valentine forever? 💕
+    </div>
+
+    <div class="buttons">
+        <button id="yesBtn" onclick="sayYes()">Yes 💍</button>
+        <button id="noBtn" onmouseover="moveNo()">No 😜</button>
+    </div>
+</div>
+
+<div class="popup" id="popup">
+    <h2>She Finally Said YES 💖</h2>
+    <p>Avishek & Nikita — Forever Together ❤️</p>
+</div>
+
+<script>
+const funnyTexts = [
+    "Are you sure? 🤔",
+    "Think again 😜",
+    "Last chance 😏",
+    "Nice try 😂",
+    "No is not allowed 😈",
+    "Destiny says YES 💕"
+];
+
+let count = 0;
+
+function moveNo(){
+    const noBtn = document.getElementById("noBtn");
+    const x = Math.random() * 260;
+    const y = Math.random() * 60;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    noBtn.innerText = funnyTexts[count % funnyTexts.length];
+    count++;
+}
+
+function sayYes(){
+    document.getElementById("popup").classList.add("active");
+}
+</script>
+
+</body>
+</html>
